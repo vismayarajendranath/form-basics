@@ -1,28 +1,33 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 
 const AddContact = (props) => {
   const [detail, setDetail] = useState({
     name: "",
     email: "",
   });
-  console.log(detail);
+  // console.log(detail);
   let add = (e) => {
     e.preventDefault();
     if (detail.name === "" || detail.email === "") {
       alert("all feilds are mandetory");
       return;
     }
+// passing props from Children to parent
     props.addContactHandler(detail);
-    setDetail({name:'', email:''})
+
+    // clearing the form
+    setDetail({ name: "", email: "" });
   };
+
   return (
     <>
       <div className="ui main">
         <h2>Add Contact</h2>
         <form className="ui form" onSubmit={add}>
           <div className="field">
-            <label>Name</label>
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
               type="text"
               name="name"
               placeholder="name"
@@ -31,8 +36,9 @@ const AddContact = (props) => {
             />
           </div>
           <div className="field">
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
               type="text"
               name="email"
               placeholder="name"

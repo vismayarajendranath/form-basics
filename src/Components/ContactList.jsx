@@ -1,8 +1,7 @@
 import React from 'react'
 import ContactCard from './ContactCard';
 
-const ContactList = (props) => {
-    console.log(props);
+const ContactList = ({contacts,removeContactHandler}) => {
     
     // const renderContactList = props.contacts.map((contact)=>{
     //     return <div className='item'>
@@ -16,10 +15,10 @@ const ContactList = (props) => {
     //      </div>
     //     </div>
     // })
-        const renderContactList = props.contacts.map((contact)=>{
+        const renderContactList = contacts.map((contact)=>{
         return (
             
-            <ContactCard contact={contact}/>
+            <ContactCard contact={contact} removeContactHandler={removeContactHandler}/>
         )
        
     })
