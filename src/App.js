@@ -13,6 +13,8 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedContacts, setSearchedContacts] = useState([]);
 
+  const [editItem, setEditItem] = useState({})
+
   const searchHandler = () => {
     // setSearchTerm(term)
     const arr = contacts.filter((item) => {
@@ -26,7 +28,7 @@ const App = () => {
   // const [soo, setSoo] = useState('vis')
   const addContactHandler = (contact) => {
     console.log(contact);
-    setContacts([...contacts, { id: uuid(), ...contact }]);
+    setContacts([{ id: uuid(), ...contact },...contacts, ]);
   };
 
   const removeContactHandler = (id) => {
@@ -36,6 +38,17 @@ const App = () => {
     });
     setContacts(filteredContact);
   };
+
+
+const editContactHandler =(id) =>{
+const filteredEditItem = contacts.filter((item)=>{
+  return item.id === id
+})
+
+// spread values inside array in a object
+setEditItem(...filteredEditItem)
+// console.log(...filteredEditItem);
+}
 
   useEffect(() => {
     const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -56,7 +69,7 @@ const App = () => {
       <AddContact addContactHandler={addContactHandler} />
       <ContactList
         contacts={searchedContacts.length > 0 ? searchedContacts : contacts}
-        removeContactHandler={removeContactHandler}
+        removeContactHandler={removeContactHandler} editContactHandler={editContactHandler}
       />
       {/* <Study soo={soo} />
     <button onClick={() => {setSoo('sneham')}}>click</button> */}

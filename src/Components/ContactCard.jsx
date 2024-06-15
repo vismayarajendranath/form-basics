@@ -1,7 +1,7 @@
 import React from "react";
 import user from "../Images/1144760.png";
 
-const ContactCard = ({ contact, removeContactHandler }) => {
+const ContactCard = ({ contact, removeContactHandler ,editContactHandler}) => {
   return (
     <div>
       <div className="item">
@@ -20,6 +20,7 @@ const ContactCard = ({ contact, removeContactHandler }) => {
               style={{ color: "red", marginTop: "7px" }}
             ></i>
           </button>
+          <button onClick={() => editContactHandler(contact.id)}>edit</button>
         </div>
       </div>
     </div>

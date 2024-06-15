@@ -13,6 +13,7 @@ const AddContact = (props) => {
       return;
     }
 // passing props from Children to parent
+
     props.addContactHandler(detail);
 
     // clearing the form
@@ -46,7 +47,7 @@ const AddContact = (props) => {
               onChange={(e) => setDetail({ ...detail, email: e.target.value })}
             />
           </div>
-          <button className="ui button blue"> ADD</button>
+          <button type="submit" className="ui button blue"> ADD</button>
         </form>
       </div>
     </>
